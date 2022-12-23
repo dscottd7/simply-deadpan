@@ -1,5 +1,5 @@
 {
-    "name": "react",
+    "name": "simply-deadpan",
     "version": "0.1.0",
     "private": true,
     "proxy": "http://localhost:3000",
@@ -44,9 +44,5 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    },
-    "devDependencies": {
-        "gh-pages": "^4.0.0",
-        "homepage": "http://dscottd7.github.io/react-app"
     }
 }
