@@ -1,0 +1,47 @@
+### Request 1: Create an exercise
+POST http://localhost:3000/jokes HTTP/1.1
+content-type: application/json
+
+{
+    "category": "Pun",
+    "setup": "Yesterday, I read an entire book about an immortal dog.",
+    "delivery": "It was impossible to put down.",
+    "safe": true,
+    "recs": 0
+}
+
+### Request 2
+POST http://localhost:3000/jokes HTTP/1.1
+content-type: application/json
+
+{
+    "category": "Pun",
+    "setup": "I thought of a joke about trickle down economics.",
+    "delivery": "But most people wouldn't get it.",
+    "safe": true,
+    "recs": 0
+}
+
+### Request 3
+POST http://localhost:3000/jokes HTTP/1.1
+content-type: application/json
+
+{
+    "category": "Pun",
+    "setup": "Did you hear about the crime in the parking garage?",
+    "delivery": "It was wrong on so many levels.",
+    "safe": true,
+    "recs": 0
+}
+
+### Request 4
+PUT http://localhost:3000/jokes/639fbe79bee39114f07dd598 HTTP/1.1
+content-type: application/json
+
+{
+    "category": "Pun",
+    "setup": "Did you hear about the crime in the parking garage?",
+    "delivery": "It was wrong on so many levels.",
+    "safe": true,
+    "recs": 1
+}
