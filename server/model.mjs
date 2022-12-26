@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
 
-// process.env.MONGODB_CONNECT_STRING
+// "mongodb+srv://cluster0.oiujt0k.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
 mongoose.connect(
-    "mongodb+srv://cluster0.oiujt0k.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority",
+    process.env.MONGODB_CONNECT_STRING,
     { useNewUrlParser: true }
 );
 
