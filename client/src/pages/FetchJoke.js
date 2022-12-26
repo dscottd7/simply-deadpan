@@ -13,7 +13,6 @@ const FetchJoke = ({ loadJokes, setJoke }) => {
     const [setup, setSetup] = React.useState();
     const [delivery, setDelivery] = React.useState();
     const [safe, setSafe] = React.useState(); 
-    const [activated, setActivated] = React.useState("");
     const [showJoke, setShowJoke] = React.useState(false);
 
     const navigate = useNavigate();
@@ -21,16 +20,17 @@ const FetchJoke = ({ loadJokes, setJoke }) => {
     const fetchJoke = async () => {
         const newJoke = await getData('https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit');
         console.log(newJoke);
+        console.log(newJoke.safe);
         setCategory(newJoke.category);
         setSetup(newJoke.setup);
         setDelivery(newJoke.delivery);
-        setSafe(newJoke.setSafe);
-        setActivated("text");
+        setSafe(newJoke.safe);
         setShowJoke(true);
     };
 
     const addJoke = async () => {
         const newJoke = { category, setup, delivery, safe };
+        console.log(newJoke);
         const response = await fetch('/jokes', {
             method: 'POST',
             body: JSON.stringify(newJoke),
@@ -66,7 +66,7 @@ const FetchJoke = ({ loadJokes, setJoke }) => {
                         <Typography sx={{ fontSize: 16 }} color="text.primary" gutterBottom>{delivery}</Typography>
                     </CardContent>
                     <CardActions>
-                        <Button variant={activated} onClick={addJoke} >Add Joke to List</Button>
+                        <Button variant="text" onClick={addJoke} >Add Joke to List</Button>
                     </CardActions>
                 </Card>
             </Grid>}
