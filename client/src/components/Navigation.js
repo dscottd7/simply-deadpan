@@ -12,11 +12,11 @@ function Navigation() {
 
   const handleChange = (event, newValue) => {
     if (newValue === 0) {
-      navigate("/");
+      navigate("/simply-deadpan/");
     } else if (newValue === 1) {
-      navigate("/add-joke");
+      navigate("/simply-deadpan/add-joke");
     } else if (newValue === 2) {
-      navigate("/query-jokeapi");
+      navigate("/simply-deadpan/query-jokeapi");
     };
     setValue(newValue);
   };

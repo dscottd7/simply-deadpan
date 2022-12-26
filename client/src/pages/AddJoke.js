@@ -29,7 +29,7 @@ const AddJoke = ({loadJokes}) => {
         });
         if(response.status === 201){
             alert("Successfully added the joke!");
-            navigate("/");
+            navigate("/simply-deadpan/");
         } else {
             alert(`Failed to add joke, status code = ${response.status}`);
         };

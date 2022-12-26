@@ -31,9 +31,9 @@ function App() {
           </Grid>
           <Grid item xs={12} >
               <Routes>
-                <Route path="/" element={<HomePage />}></Route>
-                <Route path="/add-joke" element={<AddJoke />}></Route>
-                <Route path="/query-jokeapi" element={<FetchJoke />}></Route>
+                <Route path="/simply-deadpan/" element={<HomePage />}></Route>
+                <Route path="/simply-deadpan/add-joke" element={<AddJoke />}></Route>
+                <Route path="/simply-deadpan/query-jokeapi" element={<FetchJoke />}></Route>
               </Routes>
           </Grid>
           <Grid item xs={12} >
