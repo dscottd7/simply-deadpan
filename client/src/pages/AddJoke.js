@@ -37,8 +37,8 @@ const AddJoke = ({loadJokes}) => {
 
     return (
         <Box sx={{ minWidth: 120 }}>
-            <Grid container spacing={2} item xs={6} >
-                <Grid item xs={12}>
+            <Grid container spacing={2} item xs={12} sm={6} >
+                <Grid item xs={12} sm={12} >
                     <FormControl fullWidth>
                         <TextField
                         id="outlined-textarea"
@@ -50,7 +50,7 @@ const AddJoke = ({loadJokes}) => {
                         />
                     </FormControl>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={12} >
                     <FormControl fullWidth>
                         <TextField
                         id="outlined-textarea"
@@ -62,7 +62,7 @@ const AddJoke = ({loadJokes}) => {
                         />
                     </FormControl>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={12} >
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Category</InputLabel>
                         <Select
@@ -81,7 +81,7 @@ const AddJoke = ({loadJokes}) => {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={12} >
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Appropriateness</InputLabel>
                         <Select
@@ -95,7 +95,7 @@ const AddJoke = ({loadJokes}) => {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} >
+                <Grid item xs={12} sm={12} >
                     <Button variant="contained" onClick={addJoke} >Save Joke</Button>
                 </Grid>
             </Grid>
