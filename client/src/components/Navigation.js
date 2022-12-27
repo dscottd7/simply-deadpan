@@ -4,13 +4,15 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useNavigate } from 'react-router-dom';
 
-function Navigation() {
+function Navigation({ navState, setNavState }) {
 
   const [value, setValue] = React.useState(0);
 
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
+    setValue(newValue);
+    // setNavState(newValue);
     if (newValue === 0) {
       navigate("/simply-deadpan/");
     } else if (newValue === 1) {
@@ -18,7 +20,6 @@ function Navigation() {
     } else if (newValue === 2) {
       navigate("/simply-deadpan/query-jokeapi");
     };
-    setValue(newValue);
   };
 
   return (

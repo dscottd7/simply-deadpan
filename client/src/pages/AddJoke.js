@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
 
-const AddJoke = ({loadJokes}) => {
+const AddJoke = ({navState, setNavState}) => {
 
     const [category, setCategory] = React.useState('');
     const [setup, setSetup] = React.useState('');
@@ -29,6 +29,7 @@ const AddJoke = ({loadJokes}) => {
         });
         if(response.status === 201){
             alert("Successfully added the joke!");
+            setNavState(0);
             navigate("/simply-deadpan/");
         } else {
             alert(`Failed to add joke, status code = ${response.status}`);

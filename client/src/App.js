@@ -13,17 +13,20 @@ import './App.css';
 import FetchJoke from './pages/FetchJoke';
 import AddJoke from './pages/AddJoke';
 import Grid from '@mui/material/Grid';
+import { useState } from 'react';
 
 
 function App() {
+
+  const [navState, setNavState] = useState(0);
 
   return (
     <Container>
       <Router>
         <Grid container spacing={2} >
           <Grid item xs={12} >
-            <Typography variant="h1" component="div">
-            <SentimentNeutralIcon sx={{ fontSize: 60 }} /> simply deadpan
+            <Typography variant="h2" component="div">
+            <SentimentNeutralIcon sx={{ fontSize: 42, verticalAlign: 'middle' }} /> simply deadpan
             </Typography>
           </Grid>
           <Grid item xs={12} >
@@ -31,9 +34,9 @@ function App() {
           </Grid>
           <Grid item xs={12} >
               <Routes>
-                <Route path="/simply-deadpan/" element={<HomePage />}></Route>
-                <Route path="/simply-deadpan/add-joke" element={<AddJoke />}></Route>
-                <Route path="/simply-deadpan/query-jokeapi" element={<FetchJoke />}></Route>
+                <Route path="/simply-deadpan/" element={<HomePage navState={navState} setNavState={setNavState} />}></Route>
+                <Route path="/simply-deadpan/add-joke" element={<AddJoke navState={navState} setNavState={setNavState} />}></Route>
+                <Route path="/simply-deadpan/query-jokeapi" element={<FetchJoke navState={navState} setNavState={setNavState} />}></Route>
               </Routes>
           </Grid>
           <Grid item xs={12} >

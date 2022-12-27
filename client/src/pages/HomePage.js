@@ -2,7 +2,7 @@ import React from 'react';
 import JokeList from '../components/JokeList';
 import { useState, useEffect } from 'react';
 
-function HomePage() {
+function HomePage({ navState, setNavState }) {
     const [jokes, setJoke] = useState([]);
 
     const loadJokes = async () => {

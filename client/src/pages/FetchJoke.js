@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
 
-const FetchJoke = ({ loadJokes, setJoke }) => {
+const FetchJoke = ({ navState, setNavState }) => {
 
     const [category, setCategory] = React.useState();
     const [setup, setSetup] = React.useState();
@@ -40,6 +40,7 @@ const FetchJoke = ({ loadJokes, setJoke }) => {
         });
         if(response.status === 201){
             alert("Successfully added the joke!");
+            setNavState(0);
             navigate("/simply-deadpan/");
         } else {
             alert(`Failed to add joke, status code = ${response.status}`);
