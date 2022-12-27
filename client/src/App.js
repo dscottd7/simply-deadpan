@@ -30,13 +30,13 @@ function App() {
             </Typography>
           </Grid>
           <Grid item xs={12} >
-            <Navigation />
+            <Navigation navState={navState} setNavState={setNavState} />
           </Grid>
           <Grid item xs={12} >
               <Routes>
                 <Route path="/simply-deadpan/" element={<HomePage navState={navState} setNavState={setNavState} />}></Route>
-                <Route path="/simply-deadpan/add-joke" element={<AddJoke navState={navState} setNavState={setNavState} />}></Route>
-                <Route path="/simply-deadpan/query-jokeapi" element={<FetchJoke navState={navState} setNavState={setNavState} />}></Route>
+                <Route path="/simply-deadpan/add-joke" element={<AddJoke setNavState={setNavState} />}></Route>
+                <Route path="/simply-deadpan/query-jokeapi" element={<FetchJoke setNavState={setNavState} />}></Route>
               </Routes>
           </Grid>
           <Grid item xs={12} >

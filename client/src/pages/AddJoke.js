@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
 
-const AddJoke = ({navState, setNavState}) => {
+const AddJoke = ({ setNavState }) => {
 
     const [category, setCategory] = React.useState('');
     const [setup, setSetup] = React.useState('');

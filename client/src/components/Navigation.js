@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 function Navigation({ navState, setNavState }) {
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(navState);
 
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    // setNavState(newValue);
+    setNavState(newValue);
     if (newValue === 0) {
       navigate("/simply-deadpan/");
     } else if (newValue === 1) {

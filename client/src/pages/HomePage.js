@@ -9,6 +9,7 @@ function HomePage({ navState, setNavState }) {
         const response = await fetch('/jokes');
         const data = await response.json();
         setJoke(data);
+        setNavState(navState);
     };
 
     useEffect(() => {

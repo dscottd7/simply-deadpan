@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
 
-const FetchJoke = ({ navState, setNavState }) => {
+const FetchJoke = ({ setNavState }) => {
 
     const [category, setCategory] = React.useState();
     const [setup, setSetup] = React.useState();
