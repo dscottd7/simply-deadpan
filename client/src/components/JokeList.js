@@ -17,7 +17,7 @@ function JokeList({ jokes, loadJokes }) {
                             <Joke joke={joke} key={i} />
                         </CardContent>
                         <CardActions>
-                            <Counter joke={joke} loadJokes={loadJokes} />
+                            <Counter joke={joke} key={i} loadJokes={loadJokes} />
                         </CardActions>
                     </Card>
                     

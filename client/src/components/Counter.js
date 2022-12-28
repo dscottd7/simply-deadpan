@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import RecommendIcon from '@mui/icons-material/Recommend';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -7,26 +7,16 @@ import Button from '@mui/material/Button';
 
 function Counter({ joke, loadJokes }) {
 
-    const category = joke.category;
-    const setup = joke.setup;
-    const delivery = joke.delivery;
-    const safe = joke.safe;
-    const [recs, setRecs] = useState(joke.recs);
-
-    function incrementCounter() {
-        setRecs(prevRecs => prevRecs + 1);
-        storeRecs(recs);
-    }
-
-    const storeRecs = async () => {
+    const incrementCounter = async () => {
+        const newRecs = joke.recs + 1;
         const increment = await fetch(`/jokes/${joke._id}`, {
             method: 'PUT',
             body: JSON.stringify({
-                category: category, 
-                setup: setup, 
-                delivery: delivery, 
-                safe: safe, 
-                recs: recs}),
+                category: joke.category, 
+                setup: joke.setup, 
+                delivery: joke.delivery, 
+                safe: joke.safe, 
+                recs: newRecs}),
             headers: {'Content-Type': 'application/json'}
         });
         if(increment.status === 200){
@@ -41,7 +31,7 @@ function Counter({ joke, loadJokes }) {
             <Button size="medium">
                 <RecommendIcon fontSize="medium" /> &nbsp;
                 <Typography variant="button" gutterBottom>
-                     {recs} VOTES
+                     {joke.recs} VOTES
                 </Typography>
             </Button>
         </Box>
