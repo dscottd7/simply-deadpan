@@ -29,7 +29,7 @@ function App() {
             <SentimentNeutralIcon sx={{ fontSize: 42, verticalAlign: 'middle' }} /> simply deadpan
             </Typography>
           </Grid>
-          <Grid item xs={12} >
+          <Grid item xs={12} position="sticky" >
             <Navigation navState={navState} setNavState={setNavState} />
           </Grid>
           <Grid item xs={12} >
