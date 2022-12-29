@@ -19,8 +19,6 @@ const FetchJoke = ({ setNavState }) => {
 
     const fetchJoke = async () => {
         const newJoke = await getData('https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit');
-        console.log(newJoke);
-        console.log(newJoke.safe);
         setCategory(newJoke.category);
         setSetup(newJoke.setup);
         setDelivery(newJoke.delivery);
