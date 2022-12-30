@@ -1,9 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import JokeList from '../components/JokeList';
-import { useState, useEffect } from 'react';
 
 function HomePage({ navState, setNavState }) {
-    const [jokes, setJoke] = useState([]);
+    const [jokes, setJoke] = React.useState([]);
 
     const loadJokes = async () => {
         const response = await fetch('/jokes');
@@ -12,7 +11,7 @@ function HomePage({ navState, setNavState }) {
         setNavState(navState);
     };
 
-    useEffect(() => {
+    React.useEffect(() => {
         loadJokes();
     }, []);
 

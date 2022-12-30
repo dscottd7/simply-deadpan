@@ -9,13 +9,21 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
 
-const AddJoke = ({ setNavState }) => {
-
+const AddJoke = ({ setNavState, jokeToAdd }) => {
     const [category, setCategory] = React.useState('');
     const [setup, setSetup] = React.useState('');
     const [delivery, setDelivery] = React.useState('');
     const [safe, setSafe] = React.useState('');
 
+    if (typeof jokeToAdd !== 'undefined') {
+        React.useEffect(() => {
+            setCategory(jokeToAdd.category);
+            setSetup(jokeToAdd.setup);
+            setDelivery(jokeToAdd.delivery);
+            setSafe(jokeToAdd.safe);
+        }, []);
+    };
+    
     const navigate = useNavigate();
 
     const addJoke = async () => {

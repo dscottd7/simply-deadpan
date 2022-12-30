@@ -6,14 +6,16 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
+import AddJoke from './AddJoke';
 
-const FetchJoke = ({ setNavState }) => {
+const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
 
     const [category, setCategory] = React.useState();
     const [setup, setSetup] = React.useState();
     const [delivery, setDelivery] = React.useState();
     const [safe, setSafe] = React.useState(); 
     const [showJoke, setShowJoke] = React.useState(false);
+    const [showAddJoke, setShowAddJoke] = React.useState(false);
 
     const navigate = useNavigate();
 
@@ -26,24 +28,39 @@ const FetchJoke = ({ setNavState }) => {
         setShowJoke(true);
     };
 
-    const addJoke = async () => {
-        const newJoke = { category, setup, delivery, safe };
-        console.log(newJoke);
-        const response = await fetch('/jokes', {
-            method: 'POST',
-            body: JSON.stringify(newJoke),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        if(response.status === 201){
-            alert("Successfully added the joke!");
-            setNavState(0);
-            navigate("/simply-deadpan/");
-        } else {
-            alert(`Failed to add joke, status code = ${response.status}`);
+    async function getData(url) {
+        try {
+            const response = await fetch(url);
+            const joke = await response.text();
+            const parsedJoke = JSON.parse(joke);
+            return (parsedJoke);
+        } catch (error) {
+            console.error(error);
         };
-    };
+    }; 
+
+    // const addJoke = async () => {
+    //     const newJoke = { category, setup, delivery, safe };
+    //     const response = await fetch('/jokes', {
+    //         method: 'POST',
+    //         body: JSON.stringify(newJoke),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     });
+    //     if(response.status === 201){
+    //         alert("Successfully added the joke!");
+    //         setNavState(0);
+    //         navigate("/simply-deadpan/");
+    //     } else {
+    //         alert(`Failed to add joke, status code = ${response.status}`);
+    //     };
+    // };
+
+    function addJoke() {
+        setShowAddJoke(true);
+        setJokeToAdd({ category, setup, delivery, safe });
+    }
     
     return (
 
@@ -69,19 +86,11 @@ const FetchJoke = ({ setNavState }) => {
                     </CardActions>
                 </Card>
             </Grid>}
+            {showAddJoke && <Grid item xs={12} sm={12} >
+                <AddJoke jokeToAdd={jokeToAdd} setNavState={setNavState} />
+            </Grid>}
         </Grid>
       );
 };
-
-async function getData(url) {
-    try {
-        const response = await fetch(url);
-        const joke = await response.text();
-        const parsedJoke = JSON.parse(joke);
-        return (parsedJoke);
-    } catch (error) {
-        console.error(error);
-    };
-} 
 
 export default FetchJoke;

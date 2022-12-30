@@ -13,12 +13,12 @@ import './App.css';
 import FetchJoke from './pages/FetchJoke';
 import AddJoke from './pages/AddJoke';
 import Grid from '@mui/material/Grid';
-import { useState } from 'react';
 
 
 function App() {
 
-  const [navState, setNavState] = useState(0);
+  const [navState, setNavState] = React.useState(0);
+  const [jokeToAdd, setJokeToAdd] = React.useState();
 
   return (
     <Container>
@@ -34,9 +34,15 @@ function App() {
           </Grid>
           <Grid item xs={12} >
               <Routes>
-                <Route path="/simply-deadpan/" element={<HomePage navState={navState} setNavState={setNavState} />}></Route>
-                <Route path="/simply-deadpan/add-joke" element={<AddJoke setNavState={setNavState} />}></Route>
-                <Route path="/simply-deadpan/query-jokeapi" element={<FetchJoke setNavState={setNavState} />}></Route>
+                <Route path="/simply-deadpan/" element={
+                  <HomePage navState={navState} setNavState={setNavState} />}>
+                </Route>
+                <Route path="/simply-deadpan/add-joke" element={
+                  <AddJoke setNavState={setNavState} jokeToAdd={jokeToAdd} />}>
+                </Route>
+                <Route path="/simply-deadpan/query-jokeapi" element={
+                  <FetchJoke setNavState={setNavState} jokeToAdd={jokeToAdd} setJokeToAdd={setJokeToAdd} />}>
+                </Route>
               </Routes>
           </Grid>
           <Grid item xs={12} >
