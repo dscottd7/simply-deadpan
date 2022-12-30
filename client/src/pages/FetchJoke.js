@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { useNavigate } from 'react-router-dom';
 import AddJoke from './AddJoke';
 
 const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
@@ -16,8 +15,6 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
     const [safe, setSafe] = React.useState(); 
     const [showJoke, setShowJoke] = React.useState(false);
     const [showAddJoke, setShowAddJoke] = React.useState(false);
-
-    const navigate = useNavigate();
 
     const fetchJoke = async () => {
         const newJoke = await getData('https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit');
@@ -43,7 +40,11 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
     function addJoke() {
         setShowAddJoke(true);
         setJokeToAdd({ category, setup, delivery, safe });
-    }
+    };
+
+    function cancelAddJoke() {
+        setShowAddJoke(false);
+    };
     
     return (
 
@@ -73,6 +74,7 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
                 <Typography sx={{ fontSize: 16, fontWeight: 'bold' }} gutterBottom >You can edit the joke before clicking SAVE JOKE below to save it.</Typography>
                 <p></p>
                 <AddJoke jokeToAdd={jokeToAdd} setNavState={setNavState} />
+                <Button variant="text" onClick={cancelAddJoke} >Cancel</Button>
                 </Grid>
             }
         </Grid>
