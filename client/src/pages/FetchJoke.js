@@ -26,6 +26,7 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
         setDelivery(newJoke.delivery);
         setSafe(newJoke.safe);
         setShowJoke(true);
+        setShowAddJoke(false);
     };
 
     async function getData(url) {
@@ -38,24 +39,6 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
             console.error(error);
         };
     }; 
-
-    // const addJoke = async () => {
-    //     const newJoke = { category, setup, delivery, safe };
-    //     const response = await fetch('/jokes', {
-    //         method: 'POST',
-    //         body: JSON.stringify(newJoke),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
-    //     if(response.status === 201){
-    //         alert("Successfully added the joke!");
-    //         setNavState(0);
-    //         navigate("/simply-deadpan/");
-    //     } else {
-    //         alert(`Failed to add joke, status code = ${response.status}`);
-    //     };
-    // };
 
     function addJoke() {
         setShowAddJoke(true);
@@ -86,9 +69,12 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
                     </CardActions>
                 </Card>
             </Grid>}
-            {showAddJoke && <Grid item xs={12} sm={12} >
+            {showAddJoke && <Grid item xs={12} sm={8} >
+                <Typography sx={{ fontSize: 16, fontWeight: 'bold' }} gutterBottom >You can edit the joke before clicking SAVE JOKE below to save it.</Typography>
+                <p></p>
                 <AddJoke jokeToAdd={jokeToAdd} setNavState={setNavState} />
-            </Grid>}
+                </Grid>
+            }
         </Grid>
       );
 };

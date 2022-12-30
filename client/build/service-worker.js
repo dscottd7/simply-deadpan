@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/simply-deadpan/precache-manifest.a78593d7b0b512403688c5b0e0d81711.js"
+  "/simply-deadpan/precache-manifest.8981bf63320864e13993329fb31cbee6.js"
 );
 
 workbox.clientsClaim();
