@@ -1,19 +1,10 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
 
-const USER = 'test';
-const AUTH = 'u8N0euTMe5HL7M2o'
-const MONGO_CONNECT = `mongodb+srv://${USER}:${AUTH}@cluster0.oiujt0k.mongodb.net/jokes_db?retryWrites=true&w=majority`;
-
 mongoose.connect(
-    MONGO_CONNECT,
+    process.env.MONGODB_CONNECT_STRING,
     { useNewUrlParser: true }
 );
-
-// mongoose.connect(
-//     process.env.MONGODB_CONNECT_STRING,
-//     { useNewUrlParser: true }
-// );
 
 const db = mongoose.connection;
 db.once("open", () => {
