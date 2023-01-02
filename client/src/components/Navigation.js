@@ -13,11 +13,11 @@ function Navigation({ navState, setNavState }) {
   const handleChange = (event, newValue) => {
     setNavState(newValue);
     if (newValue === 0) {
-      navigate("/simply-deadpan/");
+      navigate("/");
     } else if (newValue === 1) {
-      navigate("/simply-deadpan/add-joke");
+      navigate("/add-joke");
     } else if (newValue === 2) {
-      navigate("/simply-deadpan/query-jokeapi");
+      navigate("/query-jokeapi");
     };
   };
 
