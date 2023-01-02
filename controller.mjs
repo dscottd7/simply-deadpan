@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import * as jokes from './model.mjs';
 import express from 'express';
+import path from 'path';
 
 const PORT = process.env.PORT || 3000;
 
@@ -8,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(express.static('client/build'));
+app.use(express.static(path.join("simply-deapan", "client", "build")));
 
 /* Input validatation function */
 const isValidInput = (requestBody) => {
@@ -132,7 +133,7 @@ app.post('/jokes', (req, res) => {
 });
 
 app.get("*", (req, res) => {
-    res.sendFile(express.static('client/build'));
+    res.sendFile(path.join("simply-deapan", "client", "build", "index.html"));
 });
 
 app.listen(PORT, () => {
