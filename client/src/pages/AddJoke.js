@@ -38,7 +38,7 @@ const AddJoke = ({ setNavState, jokeToAdd }) => {
         if(response.status === 201){
             alert("Successfully added the joke!");
             setNavState(0);
-            navigate("/simply-deadpan/");
+            navigate("/");
         } else {
             alert(`Failed to add joke, status code = ${response.status}`);
         };
