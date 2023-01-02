@@ -1,7 +1,6 @@
 {
     "name": "client",
     "version": "0.1.0",
-    "homepage": "https://dscottd7.github.io/simply-deadpan",
     "private": true,
     "proxy": "http://localhost:3000",
     "dependencies": {
