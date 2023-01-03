@@ -17,13 +17,18 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
     const [showAddJoke, setShowAddJoke] = React.useState(false);
 
     const fetchJoke = async () => {
-        const newJoke = await getData('https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit');
-        setCategory(newJoke.category);
-        setSetup(newJoke.setup);
-        setDelivery(newJoke.delivery);
-        setSafe(newJoke.safe);
-        setShowJoke(true);
-        setShowAddJoke(false);
+        await getData(
+            'https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist')
+            .then(newJoke => {
+                console.log(newJoke);
+                setCategory(newJoke.category);
+                setSetup(newJoke.setup);
+                setDelivery(newJoke.delivery);
+                setSafe(newJoke.safe);
+                setShowJoke(true);
+                setShowAddJoke(false);
+            });
+        
     };
 
     async function getData(url) {
