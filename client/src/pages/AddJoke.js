@@ -15,14 +15,12 @@ const AddJoke = ({ setNavState, jokeToAdd }) => {
     const [delivery, setDelivery] = React.useState('');
     const [safe, setSafe] = React.useState('');
 
-    if (typeof jokeToAdd !== 'undefined') {
-        React.useEffect(() => {
-            setCategory(jokeToAdd.category);
-            setSetup(jokeToAdd.setup);
-            setDelivery(jokeToAdd.delivery);
-            setSafe(jokeToAdd.safe);
-        }, []);
-    };
+    React.useEffect(() => {
+        setCategory(jokeToAdd.category);
+        setSetup(jokeToAdd.setup);
+        setDelivery(jokeToAdd.delivery);
+        setSafe(jokeToAdd.safe);
+    }, []);
     
     const navigate = useNavigate();
 

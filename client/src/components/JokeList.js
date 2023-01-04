@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Counter from './Counter'
+import DeleteJoke from './DeleteJoke'
 
 function JokeList({ jokes, loadJokes }) {
     const sortedJokes = jokes.sort((a, b) => (a.recs < b.recs) ? 1 : -1);
@@ -17,7 +18,8 @@ function JokeList({ jokes, loadJokes }) {
                             <Joke joke={joke} key={i} />
                         </CardContent>
                         <CardActions>
-                            <Counter joke={joke} key={i} loadJokes={loadJokes} />
+                            <Counter joke={joke} loadJokes={loadJokes} />
+                            <DeleteJoke jokes={jokes} joke={joke} loadJokes={loadJokes} />
                         </CardActions>
                     </Card>
                     
