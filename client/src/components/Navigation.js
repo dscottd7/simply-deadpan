@@ -17,6 +17,7 @@ function Navigation({ navState, setNavState }) {
 
   const [mobileToggle, setMobleToggle] = React.useState(false);
   const matches = useMediaQuery('(min-width:425px)');
+  
   React.useEffect(() => {
     setMobleToggle(matches);
   }, []);

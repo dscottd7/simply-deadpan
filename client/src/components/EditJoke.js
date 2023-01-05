@@ -7,43 +7,46 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import DeleteJoke from './DeleteJoke'
 
-const AddJoke = ({ setNavState, jokeToAdd }) => {
 
-    const [category, setCategory] = React.useState('');
-    const [setup, setSetup] = React.useState('');
-    const [delivery, setDelivery] = React.useState('');
-    const [safe, setSafe] = React.useState('');
-    
+function EditJoke({ jokes, joke, loadJokes, setShowEditJoke }) {
+
+    const [category, setCategory] = React.useState(joke.category);
+    const [setup, setSetup] = React.useState(joke.setup);
+    const [delivery, setDelivery] = React.useState(joke.delivery);
+    const [safe, setSafe] = React.useState(joke.safe);
+    const recs = joke.recs;
+
     const navigate = useNavigate();
 
-    const addJoke = async () => {
-        const newJoke = { category, setup, delivery, safe };
-        const response = await fetch('/jokes', {
-            method: 'POST',
-            body: JSON.stringify(newJoke),
+    const editJoke = async () => {
+        const response = await fetch(`/jokes/${joke._id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                category: category, 
+                setup: setup, 
+                delivery: delivery, 
+                safe: safe, 
+                recs: recs}),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
-        if(response.status === 201){
-            setNavState(0);
-            navigate("/");
+        if(response.status === 200){
+            setShowEditJoke(false);
+            loadJokes();
         } else {
-            alert(`Failed to add joke, status code = ${response.status}`);
-        };
+            alert(`Failed to edit exercise, status code = ${response.status}`);
+        }     
+        navigate("/");
     };
 
     return (
         <Box sx={{ minWidth: 120 }}>
-            <Grid container spacing={2} item xs={12} sm={6} >
-                <Grid item xs={12} sm={12} >
-                    <Typography sx={{ fontSize: 16 }} color="text.primary" gutterBottom>Here you can add your own joke. 
-                    Complete all of the fields below and click the <strong>SAVE JOKE</strong> button.</Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} >
+            <Grid container spacing={2} item xs={12} >
+                <Grid item xs={12} >
                     <FormControl fullWidth>
                         <TextField
                         id="outlined-textarea"
@@ -55,7 +58,7 @@ const AddJoke = ({ setNavState, jokeToAdd }) => {
                         />
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} >
+                <Grid item xs={12} >
                     <FormControl fullWidth>
                         <TextField
                         id="outlined-textarea"
@@ -67,7 +70,7 @@ const AddJoke = ({ setNavState, jokeToAdd }) => {
                         />
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} >
+                <Grid item xs={12} >
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Category</InputLabel>
                         <Select
@@ -86,7 +89,7 @@ const AddJoke = ({ setNavState, jokeToAdd }) => {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} >
+                <Grid item xs={12} >
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Appropriateness</InputLabel>
                         <Select
@@ -100,12 +103,17 @@ const AddJoke = ({ setNavState, jokeToAdd }) => {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12} >
-                    <Button variant="contained" onClick={addJoke} >Save Joke</Button>
+                <Grid item xs={8} >
+                    <Button variant="contained" onClick={editJoke} >Save</Button>
+                </Grid>
+                <Grid item xs={4} >
+                    <DeleteJoke jokes={jokes} joke={joke} loadJokes={loadJokes} />
                 </Grid>
             </Grid>
         </Box>
     );
+
 };
 
-export default AddJoke;
+
+export default EditJoke;
