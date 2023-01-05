@@ -7,6 +7,7 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
 const AddJoke = ({ setNavState, jokeToAdd }) => {
@@ -38,6 +39,10 @@ const AddJoke = ({ setNavState, jokeToAdd }) => {
     return (
         <Box sx={{ minWidth: 120 }}>
             <Grid container spacing={2} item xs={12} sm={6} >
+                <Grid item xs={12} sm={12} >
+                    <Typography sx={{ fontSize: 16 }} color="text.primary" gutterBottom>Here you can add your own joke. 
+                    Complete all of the fields below and click the <strong>SAVE JOKE</strong> button.</Typography>
+                </Grid>
                 <Grid item xs={12} sm={12} >
                     <FormControl fullWidth>
                         <TextField

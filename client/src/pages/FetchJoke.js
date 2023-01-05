@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import AddJoke from './AddJoke';
+import { useNavigate } from 'react-router-dom';
 
 const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
 
@@ -14,19 +14,16 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
     const [delivery, setDelivery] = React.useState();
     const [safe, setSafe] = React.useState(); 
     const [showJoke, setShowJoke] = React.useState(false);
-    const [showAddJoke, setShowAddJoke] = React.useState(false);
 
     const fetchJoke = async () => {
         await getData(
             'https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart')
             .then(newJoke => {
-                console.log(newJoke);
                 setCategory(newJoke.category);
                 setSetup(newJoke.setup);
                 setDelivery(newJoke.delivery);
                 setSafe(newJoke.safe);
                 setShowJoke(true);
-                setShowAddJoke(false);
             });
         
     };
@@ -42,13 +39,23 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
         };
     }; 
 
-    function addJoke() {
-        setShowAddJoke(true);
-        setJokeToAdd({ category, setup, delivery, safe });
-    };
+    const navigate = useNavigate();
 
-    function cancelAddJoke() {
-        setShowAddJoke(false);
+    const addJoke = async () => {
+        const newJoke = { category, setup, delivery, safe };
+        const response = await fetch('/jokes', {
+            method: 'POST',
+            body: JSON.stringify(newJoke),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if(response.status === 201){
+            setNavState(0);
+            navigate("/");
+        } else {
+            alert(`Failed to add joke, status code = ${response.status}`);
+        };
     };
     
     return (
@@ -75,13 +82,6 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
                     </CardActions>
                 </Card>
             </Grid>}
-            {showAddJoke && <Grid item xs={12} sm={8} >
-                <Typography sx={{ fontSize: 16, fontWeight: 'bold' }} gutterBottom >You can edit the joke before clicking SAVE JOKE below to save it.</Typography>
-                <p></p>
-                <AddJoke jokeToAdd={jokeToAdd} setNavState={setNavState} />
-                <Button variant="text" onClick={cancelAddJoke} >Cancel</Button>
-                </Grid>
-            }
         </Grid>
       );
 };
