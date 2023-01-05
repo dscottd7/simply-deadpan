@@ -10,17 +10,11 @@ import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
 
 const AddJoke = ({ setNavState, jokeToAdd }) => {
+
     const [category, setCategory] = React.useState('');
     const [setup, setSetup] = React.useState('');
     const [delivery, setDelivery] = React.useState('');
     const [safe, setSafe] = React.useState('');
-
-    React.useEffect(() => {
-        setCategory(jokeToAdd.category);
-        setSetup(jokeToAdd.setup);
-        setDelivery(jokeToAdd.delivery);
-        setSafe(jokeToAdd.safe);
-    }, []);
     
     const navigate = useNavigate();
 
@@ -34,7 +28,6 @@ const AddJoke = ({ setNavState, jokeToAdd }) => {
             },
         });
         if(response.status === 201){
-            alert("Successfully added the joke!");
             setNavState(0);
             navigate("/");
         } else {
