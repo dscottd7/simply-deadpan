@@ -18,7 +18,7 @@ const FetchJoke = ({ setNavState, jokeToAdd, setJokeToAdd }) => {
 
     const fetchJoke = async () => {
         await getData(
-            'https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist')
+            'https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart')
             .then(newJoke => {
                 console.log(newJoke);
                 setCategory(newJoke.category);
