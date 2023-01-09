@@ -18,7 +18,7 @@ function HomePage({ navState, setNavState }) {
 
     React.useEffect(() => {
         loadJokes();
-    }, []);
+    });
 
     return (
         <Grid container spacing={2} >

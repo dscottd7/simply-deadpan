@@ -20,7 +20,7 @@ function Navigation({ navState, setNavState }) {
   
   React.useEffect(() => {
     setMobleToggle(matches);
-  }, []);
+  }, [matches]);
   
 
   const handleChange = (event, newValue) => {
