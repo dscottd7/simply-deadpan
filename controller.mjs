@@ -136,14 +136,6 @@ app.get("*", (req, res) => {
     res.sendFile(path.join("simply-deapan", "client", "build", "index.html"));
 });
 
-app.get("/add-joke", (req, res) => {
-    res.sendFile(path.join("simply-deapan", "client", "build", "index.html"));
-});
-
-app.get("/query-jokeapi", (req, res) => {
-    res.sendFile(path.join("simply-deapan", "client", "build", "index.html"));
-});
-
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`);
 });
