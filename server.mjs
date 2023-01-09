@@ -1,12 +1,22 @@
 import 'dotenv/config';
 import * as jokes from './model.mjs';
 import express from 'express';
+// import history from 'connect-history-api-fallback'
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 app.use(express.json());
+// app.use(history());
+
+// history({
+//     rewrites: [
+//         { from: /\//, to: '/index.html'},
+//         { from: /\/query-jokeapi/, to: '/index.html'},
+//         { from: /\/add-joke/, to: '/index.html'},
+//     ]
+//   });
 
 app.use(express.static('client/build'));
 
@@ -133,14 +143,6 @@ app.post('/jokes', (req, res) => {
 
 app.get("*", (req, res) => {
     res.sendFile(express.static('client/build'));
-});
-
-app.get("/add-joke", (req, res) => {
-    res.sendFile(path.join("simply-deapan", "client", "build", "index.html"));
-});
-
-app.get("/query-jokeapi", (req, res) => {
-    res.sendFile(path.join("simply-deapan", "client", "build", "index.html"));
 });
 
 app.listen(PORT, () => {
