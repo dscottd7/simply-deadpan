@@ -8,11 +8,11 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
-// app.use(history());
 
+// app.use(history());
 // history({
+//     index: '/index.html', 
 //     rewrites: [
-//         { from: /\//, to: '/index.html'},
 //         { from: /\/query-jokeapi/, to: '/index.html'},
 //         { from: /\/add-joke/, to: '/index.html'},
 //     ]
